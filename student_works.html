@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>地球物理通論 - 期末報告作業展示</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft JhengHei', 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .featured-section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .featured-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 25px;
+            font-size: 1.5em;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .featured-header::before {
+            content: '⭐';
+            font-size: 1.3em;
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .featured-card {
+            background: linear-gradient(135deg, #667eea15, #764ba215);
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px solid #667eea30;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .featured-card:hover {
+            transform: translateY(-5px);
+            border-color: #667eea;
+            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.2);
+        }
+
+        .featured-card h4 {
+            color: #667eea;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        .featured-card p {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 12px;
+        }
+
+        .featured-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #667eea;
+            text-decoration: none;
+            font-size: 0.85em;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .featured-link:hover {
+            gap: 12px;
+        }
+
+        .featured-link::after {
+            content: '→';
+        }
+
+        .controls {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 25px;
+            font-size: 1em;
+            transition: all 0.3s;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.95em;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .filter-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .stats {
+            display: flex;
+            gap: 15px;
+            margin-left: auto;
+        }
+
+        .stat-badge {
+            padding: 8px 15px;
+            background: #f0f0f0;
+            border-radius: 15px;
+            font-size: 0.9em;
+            font-weight: 500;
+            color: #555;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 48px rgba(0,0,0,0.15);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .student-info h3 {
+            font-size: 1.4em;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .student-id {
+            color: #888;
+            font-size: 0.9em;
+        }
+
+        .card-number {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .submit-date {
+            color: #666;
+            font-size: 0.85em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .submit-date::before {
+            content: '📅';
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .tag {
+            padding: 5px 12px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: 500;
+        }
+
+        .tag.github {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .tag.gemini {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .tag.streamlit {
+            background: #fce4ec;
+            color: #c2185b;
+        }
+
+        .tag.colab {
+            background: #fff3e0;
+            color: #ef6c00;
+        }
+
+        .tag.late {
+            background: #ffebee;
+            color: #c62828;
+        }
+
+        .tag.featured {
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            color: #000;
+            font-weight: 600;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .card.featured-item {
+            border: 2px solid #ffd700;
+            background: linear-gradient(to bottom, #fffef8, white);
+        }
+
+        .card.featured-item::before {
+            height: 5px;
+            background: linear-gradient(90deg, #ffd700, #ffed4e, #ffd700);
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .link-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 15px;
+            background: #f8f9fa;
+            border: none;
+            border-radius: 10px;
+            color: #667eea;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .link-btn:hover {
+            background: #667eea;
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .link-btn::before {
+            content: '🔗';
+            font-size: 1.2em;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: white;
+            font-size: 1.2em;
+            grid-column: 1 / -1;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .controls {
+                flex-direction: column;
+            }
+
+            .stats {
+                margin-left: 0;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌍 地球物理通論 - 期末報告作業展示</h1>
+            <p>2025學年度期末報告 | 共19位學生作品</p>
+        </div>
+
+        <div class="featured-section">
+            <div class="featured-header">特別推薦作品</div>
+            <div class="featured-grid">
+                <div class="featured-card" onclick="scrollToStudent(10)">
+                    <h4>曾柏凱</h4>
+                    <p>精彩的週次報告整理與互動設計</p>
+                    <a href="https://tsengpokai.github.io/chimo_finalreport/detail.html?id=week15" target="_blank" class="featured-link" onclick="event.stopPropagation()">查看作品</a>
+                </div>
+                <div class="featured-card" onclick="scrollToStudent(12)">
+                    <h4>黃靖家</h4>
+                    <p>完整的地球物理知識整合</p>
+                    <a href="https://jinjia0618.github.io/geophysic-final-report/" target="_blank" class="featured-link" onclick="event.stopPropagation()">查看作品</a>
+                </div>
+                <div class="featured-card" onclick="scrollToStudent(16)">
+                    <h4>林靖融</h4>
+                    <p>優質的課程筆記呈現</p>
+                    <a href="https://rrrnnn0518-ux.github.io/finalterm_report/" target="_blank" class="featured-link" onclick="event.stopPropagation()">查看作品</a>
+                </div>
+                <div class="featured-card" onclick="scrollToStudent(2)">
+                    <h4>張以蓁</h4>
+                    <p>結合多媒體的創新呈現</p>
+                    <a href="https://z72123.github.io/U11104022-Final-Project-Report/#home" target="_blank" class="featured-link" onclick="event.stopPropagation()">查看作品</a>
+                </div>
+                <div class="featured-card" onclick="scrollToStudent(1)">
+                    <h4>林圻蓁</h4>
+                    <p>清晰的內容組織與設計</p>
+                    <a href="https://chilin2tb-stack.github.io/U11104006_final/index.html" target="_blank" class="featured-link" onclick="event.stopPropagation()">查看作品</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="🔍 搜尋學生姓名或學號...">
+            </div>
+            
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">全部</button>
+                <button class="filter-btn" data-filter="github">GitHub Pages</button>
+                <button class="filter-btn" data-filter="gemini">Gemini</button>
+                <button class="filter-btn" data-filter="special">特殊平台</button>
+            </div>
+
+            <div class="stats">
+                <span class="stat-badge">總計: <span id="totalCount">19</span></span>
+                <span class="stat-badge">顯示: <span id="visibleCount">19</span></span>
+            </div>
+        </div>
+
+        <div class="cards-grid" id="cardsGrid"></div>
+    </div>
+
+    <script>
+        const students = [
+            {
+                id: 1,
+                studentId: "u11104006",
+                name: "林圻蓁",
+                date: "2025-12-24",
+                links: [
+                    { url: "https://chilin2tb-stack.github.io/U11104006_final/index.html", label: "作品網站" }
+                ],
+                type: "github",
+                late: false,
+                featured: true
+            },
+            {
+                id: 2,
+                studentId: "u11104022",
+                name: "張以蓁",
+                date: "2025-12-24",
+                links: [
+                    { url: "https://z72123.github.io/U11104022-Final-Project-Report/#home", label: "作品網站" },
+                    { url: "https://github.com/z72123/U11104022-Final-Project-Report", label: "GitHub Repository" },
+                    { url: "https://gemini.google.com/share/13729133804c", label: "Gemini分享" }
+                ],
+                type: "github",
+                late: false,
+                special: ["gemini"],
+                featured: true
+            },
+            {
+                id: 3,
+                studentId: "u11210021",
+                name: "黃冠維",
+                date: "2025-12-24",
+                links: [
+                    { url: "https://samuel10727.github.io/2025termreport-01/", label: "作品網站" }
+                ],
+                type: "github",
+                late: false
+            },
+            {
+                id: 4,
+                studentId: "u11310002",
+                name: "陳亞歆",
+                date: "2025-12-24",
+                links: [
+                    { url: "https://yaxin06.github.io/2025_term_report_geophysics_new/", label: "作品網站" },
+                    { url: "https://github.com/yaxin06/2025_term_report_geophysics_new", label: "GitHub Repository" }
+                ],
+                type: "github",
+                late: false
+            },
+            {
+                id: 5,
+                studentId: "u11310003",
+                name: "陳佑昇",
+                date: "2025-12-22",
+                links: [
+                    { url: "https://gemini.google.com/share/dba19d459ab7", label: "Gemini分享" }
+                ],
+                type: "gemini",
+                late: false
+            },
+            {
+                id: 6,
+                studentId: "u11310004",
+                name: "邱定軒",
+                date: "2025-12-24",
+                links: [
+                    { url: "https://u11310004.github.io/final-term_report_draft/", label: "作品網站" },
+                    { url: "https://ominous-meme-5gpjp9qwr6gqf76qj.github.dev/", label: "開發環境" }
+                ],
+                type: "github",
+                late: false
+            },
+            {
+                id: 7,
+                studentId: "u11310007",
+                name: "楊廂甯",
+                date: "2025-12-24",
+                links: [
+                    { url: "https://icon826.github.io/finalreport/", label: "作品網站" },
+                    { url: "https://github.com/Icon826/finalreport", label: "GitHub Repository" },
+                    { url: "https://colab.research.google.com/drive/1cTlBS0sP2PgMDNxXaYIV8SugFen9Gzo2", label: "Colab - 台灣地形圖" }
+                ],
+                type: "github",
+                late: false,
+                special: ["colab"]
+            },
+            {
+                id: 8,
+                studentId: "u11310009",
+                name: "李政暟",
+                date: "2025-12-22",
+                links: [
+                    { url: "https://zxcvbnm010043-bot.github.io/2025_term_report_geophysics/", label: "作品網站" },
+                    { url: "https://github.com/zxcvbnm010043-bot/2025_term_report_geophysics/tree/main/docs", label: "GitHub Repository" }
+                ],
+                type: "github",
+                late: false
+            },
+            {
+                id: 9,
+                studentId: "u11310011",
+                name: "鍾秉致",
+                date: "2025-12-25",
+                links: [
+                    { url: "https://u11310011-stack.github.io/2025_term_report_geophysics/", label: "作品網站" },
+                    { url: "https://github.com/u11310011-stack/2025_term_report_geophysics", label: "GitHub Repository" }
+                ],
+                type: "github",
+                late: true
+            },
+            {
+                id: 10,
+                studentId: "u11310015",
+                name: "曾柏凱",
+                date: "2025-12-24",
+                links: [
+                    { url: "https://tsengpokai.github.io/chimo_finalreport/detail.html?id=week15", label: "作品網站" },
+                    { url: "https://tsengpokai.github.io/chimo_finalreport/", label: "首頁" }
+                ],
+                type: "github",
+                late: false,
+                featured: true
+            },
+            {
+                id: 11,
+                studentId: "u11310016",
+                name: "張智詠",
+                date: "2025-12-24",
+                links: [
+                    { url: "https://earthearthton-prog.github.io/finalterm/", label: "作品網站" }
+                ],
+                type: "github",
+                late: false
+            },
+            {
+                id: 12,
+                studentId: "u11310017",
+                name: "黃靖家",
+                date: "2025-12-20",
+                links: [
+                    { url: "https://jinjia0618.github.io/geophysic-final-report/", label: "作品網站" },
+                    { url: "https://github.com/JinJia0618/geophysic-final-report", label: "GitHub Repository" }
+                ],
+                type: "github",
+                late: false,
+                featured: true
+            },
+            {
+                id: 13,
+                studentId: "u11310019",
+                name: "林煜宸",
+                date: "2025-12-23",
+                links: [
+                    { url: "https://gemini.google.com/share/5019b7404863", label: "Gemini分享" },
+                    { url: "https://github.com/diego950427/HWAND/blob/main/index.html", label: "GitHub Repository" }
+                ],
+                type: "gemini",
+                late: false,
+                special: ["github"]
+            },
+            {
+                id: 14,
+                studentId: "u11310021",
+                name: "何宣樂",
+                date: "2025-12-23",
+                links: [
+                    { url: "https://geophysicfinal-io8r4zmkwwfbg8mas5jawq.streamlit.app/", label: "Streamlit應用" }
+                ],
+                type: "streamlit",
+                late: false
+            },
+            {
+                id: 15,
+                studentId: "u11310022",
+                name: "陳柏亘",
+                date: "2025-12-22",
+                links: [
+                    { url: "https://utels2425-beep.github.io/final-report2/", label: "作品網站" }
+                ],
+                type: "github",
+                late: false
+            },
+            {
+                id: 16,
+                studentId: "u11310028",
+                name: "林靖融",
+                date: "2025-12-24",
+                links: [
+                    { url: "https://rrrnnn0518-ux.github.io/finalterm_report/", label: "地球物理學課程筆記" }
+                ],
+                type: "github",
+                late: false,
+                featured: true
+            },
+            {
+                id: 17,
+                studentId: "u11310029",
+                name: "洪敏書",
+                date: "2025-12-24",
+                links: [
+                    { url: "https://minh891711.github.io/2025_finalterm_report_geophysics/", label: "作品網站" },
+                    { url: "https://github.com/minh891711/2025_finalterm_report_geophysics", label: "GitHub Repository" }
+                ],
+                type: "github",
+                late: false
+            },
+            {
+                id: 18,
+                studentId: "u11310032",
+                name: "黃湘甯",
+                date: "2025-12-24",
+                links: [
+                    { url: "https://gemini.google.com/share/99c83df05eaf", label: "Gemini分享" }
+                ],
+                type: "gemini",
+                late: false
+            },
+            {
+                id: 19,
+                studentId: "u11310033",
+                name: "闕嘉潁",
+                date: "2025-12-21",
+                links: [
+                    { url: "https://u11310033-collab.github.io/final_tern/index.html", label: "作品網站" }
+                ],
+                type: "github",
+                late: false
+            }
+        ];
+
+        let currentFilter = 'all';
+        let searchTerm = '';
+
+        function renderCards() {
+            const grid = document.getElementById('cardsGrid');
+            let filteredStudents = students.filter(student => {
+                // 搜索過濾
+                const matchSearch = student.name.includes(searchTerm) || 
+                                  student.studentId.includes(searchTerm);
+                
+                // 類型過濾
+                let matchFilter = true;
+                if (currentFilter === 'github') {
+                    matchFilter = student.type === 'github';
+                } else if (currentFilter === 'gemini') {
+                    matchFilter = student.type === 'gemini';
+                } else if (currentFilter === 'special') {
+                    matchFilter = student.type === 'streamlit' || student.special;
+                }
+
+                return matchSearch && matchFilter;
+            });
+
+            document.getElementById('visibleCount').textContent = filteredStudents.length;
+
+            if (filteredStudents.length === 0) {
+                grid.innerHTML = '<div class="no-results">😔 沒有找到符合條件的作業</div>';
+                return;
+            }
+
+            grid.innerHTML = filteredStudents.map(student => {
+                let tags = [];
+                if (student.featured) tags.push('<span class="tag featured">⭐ 特別推薦</span>');
+                if (student.type === 'github') tags.push('<span class="tag github">GitHub Pages</span>');
+                if (student.type === 'gemini') tags.push('<span class="tag gemini">Gemini</span>');
+                if (student.type === 'streamlit') tags.push('<span class="tag streamlit">Streamlit</span>');
+                if (student.special?.includes('colab')) tags.push('<span class="tag colab">Colab</span>');
+                if (student.late) tags.push('<span class="tag late">遲交</span>');
+
+                return `
+                    <div class="card ${student.featured ? 'featured-item' : ''}" id="student-${student.id}">
+                        <div class="card-header">
+                            <div class="student-info">
+                                <h3>${student.name}</h3>
+                                <div class="student-id">${student.studentId}</div>
+                            </div>
+                            <div class="card-number">${student.id}</div>
+                        </div>
+                        <div class="submit-date">${student.date}</div>
+                        <div class="tags">
+                            ${tags.join('')}
+                        </div>
+                        <div class="links">
+                            ${student.links.map(link => 
+                                `<a href="${link.url}" target="_blank" class="link-btn">${link.label}</a>`
+                            ).join('')}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // 搜索功能
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            searchTerm = e.target.value.trim();
+            renderCards();
+        });
+
+        // 過濾按鈕
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentFilter = btn.dataset.filter;
+                renderCards();
+            });
+        });
+
+        // 滚动到指定学生卡片
+        function scrollToStudent(id) {
+            renderCards();
+            setTimeout(() => {
+                const element = document.getElementById(`student-${id}`);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    element.style.animation = 'pulse 1s ease-in-out 2';
+                }
+            }, 100);
+        }
+
+        // 初始渲染
+        renderCards();
+    </script>
+</body>
+</html>
