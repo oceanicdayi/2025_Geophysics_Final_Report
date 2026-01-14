@@ -588,7 +588,7 @@
                     { url: "https://github.com/u11310011-stack/2025_term_report_geophysics", label: "GitHub Repository" }
                 ],
                 type: "github",
-                late: true
+                late: false
             },
             {
                 id: 10,
@@ -747,7 +747,6 @@
                 if (student.type === 'gemini') tags.push('<span class="tag gemini">Gemini</span>');
                 if (student.type === 'streamlit') tags.push('<span class="tag streamlit">Streamlit</span>');
                 if (student.special?.includes('colab')) tags.push('<span class="tag colab">Colab</span>');
-                if (student.late) tags.push('<span class="tag late">遲交</span>');
 
                 return `
                     <div class="card ${student.featured ? 'featured-item' : ''}" id="student-${student.id}">
