@@ -55,7 +55,7 @@
 | 6 | u11310004 | 邱定軒 | GitHub Pages | |
 | 7 | u11310007 | 楊廂甯 | GitHub + Colab | |
 | 8 | u11310009 | 李政暟 | GitHub Pages | |
-| 9 | u11310011 | 鍾秉致 | GitHub Pages | ⚠️ 遲交 |
+| 9 | u11310011 | 鍾秉致 | GitHub Pages | |
 | 10 | u11310015 | 曾柏凱 | GitHub Pages | ⭐ |
 | 11 | u11310016 | 張智詠 | GitHub Pages | |
 | 12 | u11310017 | 黃靖家 | GitHub Pages | ⭐ |
@@ -138,8 +138,6 @@ start student_works.html # Windows
 
 - **總作品數**：19件
 - **完成率**：100%
-- **準時繳交**：18位（94.7%）
-- **遲交**：1位（5.3%）
 - **平台分布**：
   - GitHub Pages：73.7%
   - Gemini分享：15.8%
