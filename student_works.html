@@ -444,6 +444,45 @@
             font-size: 1.2em;
         }
 
+        .process-links {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed #e0e0e0;
+        }
+
+        .process-title {
+            font-size: 0.85em;
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .link-btn.process-btn {
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+            color: #2e7d32;
+            padding: 10px 14px;
+            font-size: 0.85em;
+        }
+
+        .link-btn.process-btn:hover {
+            background: linear-gradient(135deg, #43a047, #2e7d32);
+            color: white;
+        }
+
+        .link-btn.process-btn::before {
+            content: '💬';
+        }
+
+        .tag.process {
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+            color: #2e7d32;
+        }
+
+        .tag.chatgpt {
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            color: #1565c0;
+        }
+
         .no-results {
             text-align: center;
             padding: 80px 20px;
@@ -671,6 +710,10 @@
                 links: [
                     { url: "https://chilin2tb-stack.github.io/U11104006_final/index.html", label: "作品網站" }
                 ],
+                processLinks: [
+                    { url: "https://gemini.google.com/share/d0fba8ea3098", label: "Gemini初稿" },
+                    { url: "https://gemini.google.com/share/ed2b03b3b780", label: "Gemini完整版" }
+                ],
                 type: "github",
                 late: false,
                 featured: true
@@ -685,6 +728,11 @@
                     { url: "https://github.com/z72123/U11104022-Final-Project-Report", label: "GitHub Repository" },
                     { url: "https://gemini.google.com/share/13729133804c", label: "Gemini分享" },
                     { url: "https://github.com/oceanicdayi/2025_Geophysics_Final_Report/blob/main/%E5%8F%B2%E5%9C%B0%E7%94%9F%E7%94%A8_Python_%E8%AE%80%E6%87%82%E5%9C%B0%E7%90%83%E6%96%B0%E8%AA%9E%E8%A8%80.m4a", label: "🎧 語音摘要 (NotebookLM)" }
+                ],
+                processLinks: [
+                    { url: "https://gemini.google.com/share/0ee1f08ea5dd", label: "Gemini第二版" },
+                    { url: "https://gemini.google.com/share/c4f41c5d89dc", label: "Gemini第三版" },
+                    { url: "https://gemini.google.com/share/7b6ed47b4e11", label: "Gemini第四版(Pro)" }
                 ],
                 type: "github",
                 late: false,
@@ -711,6 +759,11 @@
                     { url: "https://yaxin06.github.io/2025_term_report_geophysics_new/", label: "作品網站" },
                     { url: "https://github.com/yaxin06/2025_term_report_geophysics_new", label: "GitHub Repository" }
                 ],
+                processLinks: [
+                    { url: "https://gemini.google.com/share/27cbc60e94f1", label: "GitHub指示初版" },
+                    { url: "https://gemini.google.com/share/f39469dba7eb", label: "GitHub指示修正版" },
+                    { url: "https://gemini.google.com/share/b70f3afb4b7e", label: "Hugging Face修正" }
+                ],
                 type: "github",
                 late: false
             },
@@ -721,6 +774,10 @@
                 date: "2025-12-22",
                 links: [
                     { url: "https://gemini.google.com/share/dba19d459ab7", label: "Gemini分享" }
+                ],
+                processLinks: [
+                    { url: "https://gemini.google.com/share/86a6ac79e05c", label: "製作過程1" },
+                    { url: "https://gemini.google.com/share/3ac9f0b02cd5", label: "製作過程2" }
                 ],
                 type: "gemini",
                 late: false
@@ -733,6 +790,9 @@
                 links: [
                     { url: "https://u11310004.github.io/final-term_report_draft/", label: "作品網站" },
                     { url: "https://ominous-meme-5gpjp9qwr6gqf76qj.github.dev/", label: "開發環境" }
+                ],
+                processLinks: [
+                    { url: "https://g.co/gemini/share/bc27e24e3e2c", label: "Gemini製作過程" }
                 ],
                 type: "github",
                 late: false
@@ -747,9 +807,13 @@
                     { url: "https://github.com/Icon826/finalreport", label: "GitHub Repository" },
                     { url: "https://colab.research.google.com/drive/1cTlBS0sP2PgMDNxXaYIV8SugFen9Gzo2", label: "Colab - 台灣地形圖" }
                 ],
+                processLinks: [
+                    { url: "https://chatgpt.com/share/6769b2ac-aaf0-8013-80d5-b7a1b2ebaddb", label: "ChatGPT從0開始" },
+                    { url: "https://chatgpt.com/share/676ac3e9-46c0-8013-895f-79003b4f3ffa", label: "ChatGPT指令" }
+                ],
                 type: "github",
                 late: false,
-                special: ["colab"]
+                special: ["colab", "chatgpt"]
             },
             {
                 id: 8,
@@ -759,6 +823,11 @@
                 links: [
                     { url: "https://zxcvbnm010043-bot.github.io/2025_term_report_geophysics/", label: "作品網站" },
                     { url: "https://github.com/zxcvbnm010043-bot/2025_term_report_geophysics/tree/main/docs", label: "GitHub Repository" }
+                ],
+                processLinks: [
+                    { url: "https://gemini.google.com/share/4e3b63005c42", label: "Gemini地震震測" },
+                    { url: "https://gemini.google.com/share/8de27c92f67e", label: "Gemini地殼脈動" },
+                    { url: "https://gemini.google.com/share/c6ffcbe63fb7", label: "Gemini演講" }
                 ],
                 type: "github",
                 late: false
@@ -771,6 +840,9 @@
                 links: [
                     { url: "https://u11310011-stack.github.io/2025_term_report_geophysics/", label: "作品網站" },
                     { url: "https://github.com/u11310011-stack/2025_term_report_geophysics", label: "GitHub Repository" }
+                ],
+                processLinks: [
+                    { url: "https://gemini.google.com/share/88a6f9b6e14c", label: "Gemini製作過程" }
                 ],
                 type: "github",
                 late: false
@@ -808,6 +880,10 @@
                     { url: "https://jinjia0618.github.io/geophysic-final-report/", label: "作品網站" },
                     { url: "https://github.com/JinJia0618/geophysic-final-report", label: "GitHub Repository" }
                 ],
+                processLinks: [
+                    { url: "https://gemini.google.com/share/6ba0c7d6d85d", label: "Gemini開場動畫" },
+                    { url: "https://gemini.google.com/share/16fdaede1988", label: "Gemini最終調整" }
+                ],
                 type: "github",
                 late: false,
                 featured: true
@@ -820,6 +896,10 @@
                 links: [
                     { url: "https://gemini.google.com/share/5019b7404863", label: "Gemini分享" },
                     { url: "https://github.com/diego950427/HWAND/blob/main/index.html", label: "GitHub Repository" }
+                ],
+                processLinks: [
+                    { url: "https://gemini.google.com/share/9510665b8138", label: "製作過程1" },
+                    { url: "https://gemini.google.com/share/620dd88afe7f", label: "製作過程2" }
                 ],
                 type: "gemini",
                 late: false,
@@ -844,6 +924,10 @@
                 links: [
                     { url: "https://utels2425-beep.github.io/final-report2/", label: "作品網站" }
                 ],
+                processLinks: [
+                    { url: "https://gemini.google.com/share/7b5f2bffce2b", label: "製作過程1" },
+                    { url: "https://gemini.google.com/share/c78974b0398d", label: "製作過程2" }
+                ],
                 type: "github",
                 late: false
             },
@@ -854,6 +938,9 @@
                 date: "2025-12-24",
                 links: [
                     { url: "https://rrrnnn0518-ux.github.io/finalterm_report/", label: "地球物理學課程筆記" }
+                ],
+                processLinks: [
+                    { url: "https://aistudio.google.com/prompts/18sTco0dpDdVeZFW968vyKYPu6di2QOzf", label: "AI Studio製作過程" }
                 ],
                 type: "github",
                 late: false,
@@ -932,6 +1019,17 @@
                 if (student.type === 'gemini') tags.push('<span class="tag gemini">Gemini</span>');
                 if (student.type === 'streamlit') tags.push('<span class="tag streamlit">Streamlit</span>');
                 if (student.special?.includes('colab')) tags.push('<span class="tag colab">Colab</span>');
+                if (student.special?.includes('chatgpt')) tags.push('<span class="tag chatgpt">ChatGPT</span>');
+                if (student.processLinks) tags.push('<span class="tag process">📝 製作過程</span>');
+
+                const processLinksHtml = student.processLinks ? `
+                    <div class="process-links">
+                        <div class="process-title">📝 製作過程分享</div>
+                        ${student.processLinks.map(link => 
+                            `<a href="${link.url}" target="_blank" class="link-btn process-btn">${link.label}</a>`
+                        ).join('')}
+                    </div>
+                ` : '';
 
                 return `
                     <div class="card ${student.featured ? 'featured-item' : ''}" id="student-${student.id}">
@@ -951,6 +1049,7 @@
                                 `<a href="${link.url}" target="_blank" class="link-btn">${link.label}</a>`
                             ).join('')}
                         </div>
+                        ${processLinksHtml}
                     </div>
                 `;
             }).join('');
