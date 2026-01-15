@@ -472,6 +472,76 @@
             text-decoration: underline;
         }
 
+        .audio-section {
+            background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,255,255,0.9));
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+            animation: fadeIn 1s ease-out;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .audio-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            font-size: 1.4em;
+            color: #1a1a2e;
+            font-weight: 700;
+        }
+
+        .audio-header::before {
+            content: '🎧';
+            font-size: 1.3em;
+        }
+
+        .audio-content {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .audio-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .audio-info .author {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+
+        .audio-info .title {
+            color: #555;
+            font-size: 1em;
+        }
+
+        .audio-player {
+            width: 100%;
+            height: 50px;
+            border-radius: 25px;
+            outline: none;
+        }
+
+        .audio-player::-webkit-media-controls-panel {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        }
+
+        .audio-description {
+            color: #777;
+            font-size: 0.9em;
+            font-style: italic;
+        }
+
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -552,6 +622,21 @@
                     <p>精彩的週次報告整理與互動設計</p>
                     <a href="https://tsengpokai.github.io/chimo_finalreport/" target="_blank" class="featured-link" onclick="event.stopPropagation()">查看作品</a>
                 </div>
+            </div>
+        </div>
+
+        <div class="audio-section">
+            <div class="audio-header">語音摘要播放</div>
+            <div class="audio-content">
+                <div class="audio-info">
+                    <span class="author">張以蓁</span>
+                    <span class="title">史地生用 Python 讀懂地球新語言</span>
+                </div>
+                <audio class="audio-player" controls>
+                    <source src="https://raw.githubusercontent.com/oceanicdayi/2025_Geophysics_Final_Report/main/%E5%8F%B2%E5%9C%B0%E7%94%9F%E7%94%A8_Python_%E8%AE%80%E6%87%82%E5%9C%B0%E7%90%83%E6%96%B0%E8%AA%9E%E8%A8%80.m4a" type="audio/mp4">
+                    您的瀏覽器不支援音頻播放。
+                </audio>
+                <p class="audio-description">📝 由 NotebookLM 產生的課程摘要，結合多媒體呈現地球物理學習內容</p>
             </div>
         </div>
 
