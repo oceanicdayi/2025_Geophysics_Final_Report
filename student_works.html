@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>地球物理通論 - 期末報告作業展示</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,15 +15,31 @@
         }
 
         body {
-            font-family: 'Microsoft JhengHei', 'Segoe UI', Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Noto Sans TC', 'Microsoft JhengHei', 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
             min-height: 100vh;
             padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
         }
 
         .container {
             max-width: 1400px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .header {
@@ -28,12 +47,44 @@
             color: white;
             margin-bottom: 40px;
             animation: fadeInDown 0.8s ease-out;
+            padding: 20px;
+        }
+
+        .header-icon {
+            font-size: 4em;
+            margin-bottom: 15px;
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
         .header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
+            font-size: 2.8em;
+            margin-bottom: 15px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #fff, #a8edea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin-bottom: 10px;
+            color: #a8edea;
+        }
+
+        .header .description {
+            font-size: 1em;
+            opacity: 0.8;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
         }
 
         .header p {
@@ -42,12 +93,14 @@
         }
 
         .featured-section {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,255,255,0.9));
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.2);
             margin-bottom: 30px;
             animation: fadeIn 1s ease-out;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
         }
 
         .featured-header {
@@ -55,13 +108,13 @@
             align-items: center;
             gap: 12px;
             margin-bottom: 25px;
-            font-size: 1.5em;
-            color: #333;
-            font-weight: 600;
+            font-size: 1.6em;
+            color: #1a1a2e;
+            font-weight: 700;
         }
 
         .featured-header::before {
-            content: '⭐';
+            content: '🏆';
             font-size: 1.3em;
         }
 
@@ -72,18 +125,34 @@
         }
 
         .featured-card {
-            background: linear-gradient(135deg, #667eea15, #764ba215);
-            padding: 20px;
-            border-radius: 12px;
-            border: 2px solid #667eea30;
-            transition: all 0.3s;
+            background: linear-gradient(135deg, #667eea08, #764ba210);
+            padding: 22px;
+            border-radius: 15px;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
         }
 
+        .featured-card::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 17px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            z-index: -1;
+            opacity: 0.3;
+            transition: opacity 0.3s;
+        }
+
         .featured-card:hover {
-            transform: translateY(-5px);
-            border-color: #667eea;
-            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.2);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.25);
+        }
+
+        .featured-card:hover::before {
+            opacity: 1;
         }
 
         .featured-card h4 {
@@ -118,16 +187,17 @@
         }
 
         .controls {
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,255,255,0.9));
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.2);
             margin-bottom: 30px;
             display: flex;
             gap: 15px;
             flex-wrap: wrap;
             align-items: center;
             animation: fadeIn 1s ease-out;
+            backdrop-filter: blur(10px);
         }
 
         .search-box {
@@ -137,17 +207,18 @@
 
         .search-box input {
             width: 100%;
-            padding: 12px 20px;
+            padding: 14px 22px;
             border: 2px solid #e0e0e0;
-            border-radius: 25px;
+            border-radius: 30px;
             font-size: 1em;
             transition: all 0.3s;
+            background: white;
         }
 
         .search-box input:focus {
             outline: none;
             border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15);
         }
 
         .filter-buttons {
@@ -196,19 +267,20 @@
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 28px;
             animation: fadeIn 1.2s ease-out;
         }
 
         .card {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-            transition: all 0.3s;
+            background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(255,255,255,0.95));
+            border-radius: 20px;
+            padding: 28px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(10px);
         }
 
         .card::before {
@@ -217,13 +289,13 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
+            height: 5px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
         }
 
         .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 48px rgba(0,0,0,0.15);
+            transform: translateY(-12px) scale(1.01);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
         }
 
         .card-header {
@@ -285,18 +357,21 @@
         }
 
         .tag.github {
-            background: #f0f0f0;
+            background: linear-gradient(135deg, #f0f0f0, #e8e8e8);
             color: #333;
+            border: 1px solid #ddd;
         }
 
         .tag.gemini {
-            background: #e8f5e9;
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
             color: #2e7d32;
+            border: 1px solid #a5d6a7;
         }
 
         .tag.streamlit {
-            background: #fce4ec;
+            background: linear-gradient(135deg, #fce4ec, #f8bbd9);
             color: #c2185b;
+            border: 1px solid #f48fb1;
         }
 
         .tag.colab {
@@ -345,21 +420,23 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            padding: 12px 15px;
-            background: #f8f9fa;
+            padding: 14px 18px;
+            background: linear-gradient(135deg, #f8f9fa, #f1f3f4);
             border: none;
-            border-radius: 10px;
+            border-radius: 12px;
             color: #667eea;
             text-decoration: none;
-            font-size: 0.9em;
+            font-size: 0.92em;
             transition: all 0.3s;
             cursor: pointer;
+            font-weight: 500;
         }
 
         .link-btn:hover {
-            background: #667eea;
+            background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
-            transform: translateX(5px);
+            transform: translateX(8px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
         }
 
         .link-btn::before {
@@ -369,10 +446,30 @@
 
         .no-results {
             text-align: center;
-            padding: 60px 20px;
+            padding: 80px 20px;
             color: white;
-            font-size: 1.2em;
+            font-size: 1.3em;
             grid-column: 1 / -1;
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9em;
+            margin-top: 40px;
+        }
+
+        .footer a {
+            color: #a8edea;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
         }
 
         @keyframes fadeIn {
@@ -421,8 +518,10 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>🌍 地球物理通論 - 期末報告作業展示</h1>
-            <p>2025學年度期末報告 | 共19位學生作品</p>
+            <div class="header-icon">🌍</div>
+            <h1>地球物理通論 - 期末報告作業展示</h1>
+            <p class="subtitle">2025學年度期末專題成果 | 共19位學生作品</p>
+            <p class="description">探索2025地球物理課程的創新成果！學生們運用AI工具，將一學期所學轉化為生動的互動式網頁展示。</p>
         </div>
 
         <div class="featured-section">
@@ -802,5 +901,15 @@
         // 初始渲染
         renderCards();
     </script>
+
+    <footer class="footer">
+        <p>🌍 地球物理通論 2025學年度期末報告作品集</p>
+        <p style="margin-top: 10px;">
+            <a href="https://github.com/oceanicdayi/2025_Geophysics_Final_Report" target="_blank">GitHub Repository</a>
+            &nbsp;|&nbsp;
+            臺北市立大學 地球環境暨生物資源學系
+        </p>
+        <p style="margin-top: 15px; opacity: 0.6;">© 2025 All Rights Reserved</p>
+    </footer>
 </body>
 </html>
